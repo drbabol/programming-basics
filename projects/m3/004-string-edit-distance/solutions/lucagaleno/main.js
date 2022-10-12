@@ -14,15 +14,18 @@ function editDistance(s, t){
         let cost = 0;
 
         if (s.slice(-1) != t.slice(-1)) {
-            cost =1;
-            let d1 = editDistance(s.slice(-1), t) + 1;
-            let d2 = editDistance(s, t.slice(-1)) + 1;
-            let d3 = editDistance(s.slice(-1), t.slice(-1)) + cost;
 
-            return (Math.min(d1, d2, d3));
+            cost = 1;
+           
+            d1 = parseInt((editDistance((s.substring(0, s.length-1)), t))) + 1;
+            d2 = parseInt((editDistance(s, (t.substring(0, t.length-1))))) + 1;
+            d3 = parseInt((editDistance((s.substring(0, s.length-1)), (t.substring(0, t.length-1))))) + cost;
+
         };
+        return (Math.min(d1, d2, d3));
     };
 };
 
 console.log(`the distanze between ${string1} and ${string2} is ${editDistance(string1, string2)}`)
+
 
