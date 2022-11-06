@@ -1,7 +1,7 @@
 //004-string-edit-distance
 
-let string1 = 'kitten';
-let string2 = 'sitting';
+const string1 = 'kitten';
+const string2 = 'sitting';
 
 function editDistance(s, t){
 
