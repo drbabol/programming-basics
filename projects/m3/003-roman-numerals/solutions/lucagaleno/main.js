@@ -1,6 +1,5 @@
 //003-roman-numerals
 
-
 const prompt = require('prompt-sync')();
 const value = prompt('Enter the Roman Number: ');
 
@@ -28,7 +27,7 @@ function romanNumberConversion(romanNumber){
         if (romanNumber.length === 2){
             return intNumber2-intNumber1
         }else{
-            let number = (intNumber2 - intNumber1)
+            const number = (intNumber2 - intNumber1)
             return number += romanNumberConversion(romanNumber.substring(2))
         }
     }
