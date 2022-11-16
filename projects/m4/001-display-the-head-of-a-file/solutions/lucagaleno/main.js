@@ -9,15 +9,20 @@ const numberOfLines = -10;
 const fs = require('fs');
 
 const fileRead = (fileName) => {
+
+    return new Promise((resolve, reject) => {
     
-    try {
-        const data = fs.readFileSync(fileName, {encoding: 'utf-8'});
-        const lines = data.split('\n');
-        return extractHeadTail(lines, numberOfLines)
-    } catch {
-        return console.error('File does not exist')
+        try {
+            const data = fs.readFileSync(fileName, {encoding: 'utf-8'});
+            const lines = data.split('\n');
+            resolve(lines)
+        } catch {
+            reject()
+        }
+    })
+        .then((lines) => extractHeadTail(lines, numberOfLines))
+        .catch(() => console.error('File was not found'))
     }
-}
 
 // function to extract the rows
 const extractHeadTail = (lines, numberOfLines) => {
@@ -38,14 +43,15 @@ const extractHeadTail = (lines, numberOfLines) => {
             resolve()
 
         } else {
-            reject(console.error('There are not enough lines'))
+            reject()
         }
     })
         .then(() => console.log(`Reading finished.`))
-        .catch(() => console.error('Error!'))
+        .catch(() => console.error('Error! There are not enough lines'))
 }
 
 fileRead(fileName) 
+
 
 /*
 // solution of the exe with async / await
