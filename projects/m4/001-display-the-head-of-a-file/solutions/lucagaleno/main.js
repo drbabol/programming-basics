@@ -50,8 +50,7 @@ const extractHeadTail = (lines, numberOfLines) => {
         .catch(() => console.error('Error! There are not enough lines'))
 }
 
-fileRead(fileName) 
-
+fileRead(fileName)
 
 /*
 // solution of the exe with async / await
