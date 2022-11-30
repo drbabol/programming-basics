@@ -1,21 +1,12 @@
 //003-concatenate-multiple-files
 
+const { resolve } = require('path');
+
 //package
 const prompt = require('prompt-sync')();
 const fs = require('fs').promises;
 
-//function to create an array of files name
-const createArrayFiles = () => { 
-    const myArray = []
-    let fileName = prompt('Enter the files names you want to concatenate (empty to stop entering files) ');
-
-    if (fileName === ''){
-        return;
-    } else {
-        myArray.push(fileName, createArrayFiles())
-        return ([].concat(...(myArray))).filter((elem) => elem != undefined);
-    }
-};
+const myFiles = ['file2.txt', 'file1.txt']   //createArrayFiles();
 
 //function to read and concatenate multiple files content
 const fileRead = fileName => {
@@ -23,9 +14,9 @@ const fileRead = fileName => {
     const promises = [];
 
     fileName.forEach(file => {
-        data = fs.readFile(file, {encoding:'utf-8'}) //promise
+        data = fs.readFile(file, {encoding:'utf-8'})
         .then()
-        .catch (() => console.error(`this file: "${file}" does not exist`) & reject()), //reject to stop Promise.all
+        .catch (() => console.error(`this file: "${file}" does not exist`) & reject()),  
         promises.push(data)
     });
 
@@ -37,5 +28,4 @@ const fileRead = fileName => {
         .catch(()=> console.log('somethig went wrong, one or more file do not exist.'))       
 };
 
-myFiles = createArrayFiles();
 fileRead(myFiles)
