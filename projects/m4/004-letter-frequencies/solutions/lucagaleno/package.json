@@ -1,0 +1,12 @@
+{
+  "name": "004-letter-frequencies",
+  "version": "1.0.0",
+  "description": "One technique that can be used to help break some simple forms of encryption is frequency analysis.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

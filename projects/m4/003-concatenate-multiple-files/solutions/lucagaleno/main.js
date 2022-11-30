@@ -35,7 +35,6 @@ const fileRead = fileName => {
     }
     
     Promise.all(promises).then(fileContents => {
-        console.log(fileContents)
         fileContents = [].concat(...(fileContents)) //flatting the array of element's file array
         fileContents = fileContents.slice(0).toString().replaceAll(',','\n') //make a string with all the files content
         return console.log(fileContents)
