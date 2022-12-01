@@ -27,7 +27,7 @@ const fileRead = fileName => {
     fileName.forEach(file => {
         data = fs.readFile(file, {encoding:'utf-8'}) //promise
         .then()
-        .catch (() => console.error(`this file: "${file}" does not exist`) & rejects()), //reject to stop Promise.all
+        .catch (() => console.error(`this file: "${file}" does not exist`) & reject()), //reject to stop Promise.all
         promises.push(data)
     });
 
